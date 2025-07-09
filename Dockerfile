@@ -19,11 +19,18 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     wget \
     xxd \
-    sudo
+    sudo \
+    tsocks
+
+# Copy the tsocks.conf file into the image
+COPY setup/tsocks.conf /etc/tsocks.conf
+
+# Set environment variable to point to the tsocks.conf file (optional, if not using default location)
+ENV TSOCKS_CONF_FILE=/etc/tsocks.conf
 
 #RUN pip3 install --upgrade setuptools pip
 
-RUN git clone --depth 1 https://github.com/llvm/llvm-project.git /usr/src/llvm-project
+RUN tsocks git clone --depth 1 https://github.com/llvm/llvm-project.git /usr/src/llvm-project
 WORKDIR /usr/src/llvm-project
 RUN mkdir build
 
