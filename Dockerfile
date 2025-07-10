@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     xxd \
     sudo \
-    tsocks
+    tsocks \
+    gdb
 
 # Copy the tsocks.conf file into the image
 COPY setup/tsocks.conf /etc/tsocks.conf
