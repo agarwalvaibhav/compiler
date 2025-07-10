@@ -20,10 +20,9 @@
     
     # The following commands only work in the docker shell
     
-    make configure # cmake configure setp 
-    make build     # cmake build
-    make test      # Runs the test script. Also runs steps above.
-    make clean     # Removes build dir
+    make config                                                     # cmake configure setp 
+    mkdir build && cd build && cmake .. -G Ninja && ninja toyc-ch1  # To build toy utility
+    make clean                                                      # Removes build dir
     ```
 4. Run the test cases
 ``` bash
