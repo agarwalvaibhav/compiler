@@ -8,7 +8,7 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/mlir/examples/toy/Ch2/toyc-ch2",
+      "program": "${workspaceFolder}/build/examples/toy/Ch2/toyc-ch2",
       "args": [
         "${workspaceFolder}/mlir/test/Examples/Toy/Ch2/codegen.toy",
         "-emit=mlir",
@@ -31,25 +31,6 @@
               "ignoreFailures": true
           }
       ]
-    },
-  {
-    "name": "(gdb) Attach",
-    "type": "cppdbg",
-    "request": "attach",
-    "program": "${workspaceFolder}/build/mlir/examples/toy/Ch2",
-    "MIMode": "gdb",
-    "setupCommands": [
-        {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-        },
-        {
-            "description": "Set Disassembly Flavor to Intel",
-            "text": "-gdb-set disassembly-flavor intel",
-            "ignoreFailures": true
-        }
-    ]
-  }
+    }
 ]
 }
