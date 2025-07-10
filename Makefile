@@ -6,7 +6,7 @@ test: build
 	./scripts/runtest.sh
 
 build: config
-	cmake --build ./build
+	cmake --build ./build --target mlir-coding-exercise
 
 clean:
 	rm -rf build
@@ -14,8 +14,11 @@ clean:
 config:
 	@echo "Configure CMake"
 	mkdir -p build
-	#cmake -G Ninja .. -B build -S .
-	cmake -G Ninja .. -B build -DCMAKE_BUILD_TYPE=Debug -S .
+	cmake -G Ninja -S ./mlir -B build \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+		-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_ENABLE_LLD=ON \
+		-DLLVM_CCACHE_BUILD=ON
 
 docker-build: ## Build docker
 	@echo "Building Docker $(DOCKER_IMAGE)"

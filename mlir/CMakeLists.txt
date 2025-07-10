@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13.4)
-project(mlir-toy-tutorial LANGUAGES C CXX)
+project(mlir-coding-exercise LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard to conform to")
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -23,5 +23,11 @@ include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${MLIR_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-# Enable subdirs
-add_subdirectory(mlir/examples/toy)
+# Add top-level target
+add_custom_target(${PROJECT_NAME})
+
+# Add examples/toy subdirectory
+add_subdirectory(examples/toy)
+
+# Ensure top-level target depends on the Toy example
+add_dependencies(${PROJECT_NAME} Toy)
