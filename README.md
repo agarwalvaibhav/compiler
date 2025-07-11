@@ -20,15 +20,7 @@
     
     # The following commands only work in the docker shell
     
-    make config                                                     # cmake configure setp 
-    mkdir build && cd build && cmake .. -G Ninja && ninja toyc-ch1  # To build toy utility
-    make clean                                                      # Removes build dir
+    make config   # cmake configure setp 
+    make build    # To build target
+    make clean    # Removes build dir
     ```
-4. Run the test cases
-``` bash
-make shell
-
-# Modify script/runtest.sh and add your own tests in here
-make test
-```
-
