@@ -21,7 +21,9 @@ RUN apt-get update && apt-get install -y \
     xxd \
     sudo \
     tsocks \
-    gdb
+    gdb \
+    tree \
+    vim
 
 # Copy the tsocks.conf file into the image
 COPY setup/tsocks.conf /etc/tsocks.conf
@@ -43,7 +45,6 @@ RUN cmake -GNinja -B build -S llvm      \
     -DLLVM_ENABLE_PROJECTS=mlir         \
     -DLLVM_BUILD_EXAMPLES=ON            \
     -DLLVM_TARGETS_TO_BUILD=host        \
-    -DCMAKE_BUILD_TYPE=Release          \
     -DCMAKE_CXX_FLAGS_RELEASE="-O0"     \
     -DLLVM_ENABLE_ASSERTIONS=ON
 

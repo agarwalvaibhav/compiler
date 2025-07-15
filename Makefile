@@ -1,5 +1,5 @@
 DOCKER_NAME    	= llvm
-DOCKER_VERSION 	= 1.1
+DOCKER_VERSION 	= 1.1.1
 DOCKER_IMAGE   	= $(DOCKER_NAME):$(DOCKER_VERSION)
 
 test: build
@@ -29,9 +29,8 @@ shell: ## Run container and enter with a bash shell
 	  -v "$(PWD):/work" \
 	  -w /work -it $(DOCKER_IMAGE) bash
 
-docker-stop: ## Stop and remove a running container
-	-docker stop $(DOCKER_IMAGE)
-	-docker rm -f $(DOCKER_IMAGE)
+docker-rmi: ## Remove a container
+	-docker rmi $(DOCKER_IMAGE)
 
 docker-size: ## Get the size of the Docker images
 	@echo "Size of docker image $(DOCKER_IMAGE):"
